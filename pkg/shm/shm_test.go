@@ -20,6 +20,8 @@ package shm
 import (
 	"log"
 	"sync/atomic"
+	"runtime"	
+	"sync"
 	"testing"
 	"unsafe"
 
@@ -27,7 +29,7 @@ import (
 )
 
 func TestAtomic(t *testing.T) {
-/*	// just for test
+	// just for test
 	originPath := types.MosnConfigPath
 	types.MosnConfigPath = "."
 
@@ -58,7 +60,7 @@ func TestAtomic(t *testing.T) {
 
 	wg.Wait()
 
-	if *counter != uint32(expected) {
+/*	if *counter != uint32(expected) {
 		t.Errorf("counter error, expected %d, actual %d", 10000, *counter)
 	}
 
